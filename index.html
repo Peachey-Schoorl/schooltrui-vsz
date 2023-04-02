@@ -27,6 +27,77 @@
     .price:before {
       vertical-align: super;
     }
+
+    /* Color Styling */
+    :root {
+      --primary: #10245C;
+      --secondary: #AFAFAF;
+    }
+
+    html {
+      background-color: var(--primary);
+    }
+
+    body, button, input, optgroup, select, textarea {
+      color: #fff;
+    }
+
+    .title {
+      color: #fff;
+    }
+
+    .version-1:before {
+      background-color: #0F0F44;
+    }
+
+    .version-2:before {
+      background-color: #AFAFAF;
+    }
+
+    .color {
+      color: #7D91CA;
+    }
+
+    .color a {
+      color: #fff;
+    }
+
+    .buy-now a {
+      background-color: #7D91CA;
+      color: var(--primary);
+    }
+
+    /* Other styles */
+    .buy-now a {
+      border: none;
+      border-radius: 0;
+    }
+
+    .size li {
+      list-style-type: none;
+    }
+
+    .price:before {
+      content: "€";
+    }
+
+    .color > a:before {
+      border-radius: 50%;
+      content: " ";
+    }
+
+    /* Overrides on Bulma classes*/
+    .tag:not(body) {
+      width: 3.5em;
+      background-color: var(--primary);
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    .button.is-hovered, .button:hover {
+      color: #fff;
+    }
+
   </style>
 </head>
 <body>
