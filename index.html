@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schooltrui VSZ</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <style>
     /* Layout */
     html, body {
@@ -26,6 +29,23 @@
 
     .price:before {
       vertical-align: super;
+    }
+
+    /* Typography */
+    body {
+      letter-spacing: 0.1rem;
+    }
+
+    body, button, input, optgroup, select, textarea {
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .title, .price {
+      letter-spacing: 0.075rem;
+    }
+
+    .price:before {
+      font-size: 50%;
     }
 
     /* Color Styling */
