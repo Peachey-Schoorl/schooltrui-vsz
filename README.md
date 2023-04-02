@@ -4,7 +4,9 @@ This repository contains the source code for the landingspage of the "Schooltrui
 
 ## Development
 
-The page is plain HTML, CSS and JavaScript.
+The page is plain HTML.
+
+Besides plain CSS, [Bulma](https://bulma.io/) is used for styling.
 
 The actual conversion page (where the sweater can be bought) is hosted on Stripe.
 
