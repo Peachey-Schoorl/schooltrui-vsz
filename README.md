@@ -15,3 +15,17 @@ The main colors used for the hoodie are:
 - `#0F0F44` Darkblue
 - `#AFAFAF` Lightgrey
 - `#FFFFFF` White
+
+### Page Elements
+
+The page contains the following elements:
+
+- Header (for the project title)
+- Hero 
+  - Image (for the hoodie)
+  - Price
+  - Size selector (for the hoodie size)
+  - Color selector
+  - Action Button ("Buy Now")
+- Content for more information and contact details
+- Footer (for social media links and email)
