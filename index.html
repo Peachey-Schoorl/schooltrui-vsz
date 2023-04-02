@@ -6,23 +6,12 @@
   <title>Schooltrui VSZ</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <style>
-    html, body, .hero {
+    /* Layout */
+    html, body {
       height: 100%;
     }
 
-    .size li {
-      list-style-type: none;
-    }
-
-    .price:before {
-      content: "€";
-      font-size: 50%;
-      vertical-align: super;
-    }
-
-    .color > span:before {
-      border-radius: 50%;
-      content: " ";
+    .color > a:before {
       display: inline-block;
       height: 2em;
       margin: 0 0.35em;
@@ -31,12 +20,12 @@
       width: 2em;
     }
 
-    .version-1:before {
-      background-color: #0F0F44;
+    .hero-info {
+      padding-left: 5rem;
     }
 
-    .version-2:before {
-      background-color: #AFAFAF;
+    .price:before {
+      vertical-align: super;
     }
   </style>
 </head>
