@@ -127,7 +127,7 @@
   <section class="hero-body columns">
     <div class="hero-image column is-half container has-text-centered">
       <figure class="image is-square">
-        <img src="https://gcdnb.pbrd.co/images/Av8OXSbT4fVY.png" alt="Schooltrui VSZ">
+        <img src="grijs-voorkant.png" alt="Schooltrui VSZ">
       </figure>
     </div>
     <div class="hero-info column is-half container has-text-centered">
@@ -153,7 +153,16 @@
     </div>
   </section>
 </main>
-<footer>
-</footer>
+<script>
+  const image = document.querySelector('.hero-image img')
+
+  document.querySelector('.version-1').addEventListener('click', function (e) {
+    image.src = 'blauw-voorkant.png';
+  });
+
+  document.querySelector('.version-2').addEventListener('click', function (e) {
+    image.src = 'grijs-voorkant.png';
+  });
+</script>
 </body>
 </html>
