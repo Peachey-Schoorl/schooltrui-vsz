@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     /* Layout */
     html, body {
@@ -27,10 +27,6 @@
       padding-left: 5rem;
     }
 
-    .price:before {
-      vertical-align: super;
-    }
-
     /* Typography */
     body {
       letter-spacing: 0.1rem;
@@ -44,8 +40,8 @@
       letter-spacing: 0.075rem;
     }
 
-    .price:before {
-      font-size: 50%;
+    .price {
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* Color Styling */
@@ -97,10 +93,6 @@
       list-style-type: none;
     }
 
-    .price:before {
-      content: "€";
-    }
-
     .color > a:before {
       border-radius: 50%;
       content: " ";
@@ -133,13 +125,15 @@
     <div class="hero-info column is-half container has-text-centered">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
       <div class="has-text-left">
-        <p class="price is-size-4 mb-6">24<span class="is-size-6">,99</span></p>
+        <p class="price is-size-4 mb-6">€24,99</p>
         <ul class="size tags mb-5">
+          <li class="tag is-medium is-rounded">XXS</li>          
           <li class="tag is-medium is-rounded">XS</li>
           <li class="tag is-medium is-rounded">S</li>
           <li class="tag is-medium is-rounded">M</li>
           <li class="tag is-medium is-rounded">L</li>
           <li class="tag is-medium is-rounded">XL</li>
+          <li class="tag is-medium is-rounded">XXL</li>
         </ul>
         <p class="color">
           <a href="#" class="version-1">Blauw</a>
