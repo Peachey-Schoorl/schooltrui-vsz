@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     /* Layout */
     html, body {
@@ -33,15 +33,16 @@
     }
 
     body, button, input, optgroup, select, textarea {
-      font-family: 'Oswald', sans-serif;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .title, .price {
       letter-spacing: 0.075rem;
     }
-
-    .price {
-      font-family: 'Open Sans', sans-serif;
+    
+    .price::after {
+      content: " euro";
+      opacity: 50%
     }
 
     /* Color Styling */
