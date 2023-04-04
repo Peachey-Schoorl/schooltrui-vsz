@@ -119,9 +119,18 @@
 <main class="hero is-medium container">
   <section class="hero-body columns">
     <div class="hero-image column is-half container has-text-centered">
-      <figure class="image is-square">
-        <img src="grijs-voorkant.png" alt="Schooltrui VSZ">
-      </figure>
+      <div data-js="hero-switch">
+        <div data-js-switch="gray" class="" >
+          <figure class="image is-square">
+            <img src="grijs-voorkant.png" alt="Schooltrui VSZ">
+          </figure>
+        </div>
+        <div data-js-switch="blue" class="is-hidden">
+          <figure class="image is-square">
+            <img src="blauw-voorkant.png" alt="Schooltrui VSZ">
+          </figure>
+        </div>
+      </div>
     </div>
     <div class="hero-info column is-half container has-text-centered">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
@@ -142,22 +151,45 @@
           <a href="#" class="version-2">Grijs</a>
         </p>
         <p class="buy-now mt-6">
-          <a class="button is-large is-fullwidth" href="#">Bestel nu</a>
+          <a data-js="pay-link" class="is-hidden button is-large is-fullwidth" href="#">Bestel nu</a>
         </p>
       </div>
     </div>
   </section>
 </main>
 <script>
-  const image = document.querySelector('.hero-image img')
+  const payLinks = {
+    /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
+     *
+     * De "blue" en "gray" laten staan anders gaat het stuk!
+     * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/a1b2c3d4e5f6g7h8j9'
+     */
+    blue: '',
+    gray: '',
+  }
 
-  document.querySelector('.version-1').addEventListener('click', function (e) {
-    image.src = 'blauw-voorkant.png';
-  });
+  const heroSwitch = document.querySelector('[data-js="hero-switch"]')
+  const payLink = document.querySelector('[data-js="pay-link"]')
 
-  document.querySelector('.version-2').addEventListener('click', function (e) {
-    image.src = 'grijs-voorkant.png';
-  });
+  function handleSwitch(event) {
+    heroSwitch.querySelectorAll('[ data-js-switch]').forEach((div) => {
+      div.classList.toggle('is-hidden')
+    })
+
+    togglePayLink()
+  }
+
+  function togglePayLink() {
+    const element = heroSwitch.querySelector('[data-js-switch]:not(.is-hidden)')
+    const color = element.dataset.jsSwitch
+    payLink.setAttribute('href', payLinks[color])
+  }
+
+  togglePayLink()
+
+  payLink.classList.remove('is-hidden')
+
+  document.querySelector('.color').addEventListener('click', handleSwitch)
 </script>
 </body>
 </html>
