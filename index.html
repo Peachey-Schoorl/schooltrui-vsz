@@ -166,12 +166,17 @@
         </p>
         <p class="mt-4">
           <!-- @TODO: Burb content goes here (see https://github.com/Peachey-Schoorl/schooltrui-vsz/issues/6) -->
+          Vul hieronder je email adres in om een trui te reserveren!
         </p>
       </div>
     </div>
   </section>
-  <section class="container section">
+  <section class="container section box mb-6">
   <!-- @TODO: Other content goes here (see https://github.com/Peachey-Schoorl/schooltrui-vsz/issues/7) -->
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScxXVXKS2eeiIdDE20BgIJub5Hco8TiH7oYRkqzmEWGSNoKKA/viewform?embedded=true"
+      width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…
+    </iframe>
   </section>
 </main>
 <script>
@@ -204,7 +209,7 @@
 
   togglePayLink()
 
-  payLink.classList.remove('is-hidden')
+  // payLink.classList.remove('is-hidden')
 
   document.querySelector('.color').addEventListener('click', handleSwitch)
 </script>
