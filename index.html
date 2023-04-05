@@ -50,6 +50,7 @@
     :root {
       --primary: #10245C;
       --secondary: #AFAFAF;
+      --light: #FFF;
     }
 
     html {
@@ -57,11 +58,11 @@
     }
 
     body, button, input, optgroup, select, textarea {
-      color: #fff;
+      color: var(--light);
     }
 
     .title {
-      color: #fff;
+      color: var(--light);
     }
 
     .version-1:before {
@@ -119,12 +120,12 @@
     .tag:not(body) {
       width: 3.5em;
       background-color: var(--primary);
-      color: #fff;
-      border: 1px solid #fff;
+      color: var(--light);
+      border: 1px solid var(--light);
     }
 
     .button.is-hovered, .button:hover {
-      color: #fff;
+      color: var(--light);
     }
   </style>
 </head>
