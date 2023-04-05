@@ -223,7 +223,7 @@
   document.querySelector('[data-js="tags"]').addEventListener('click', handleTagEvent)
 
   function handleSwitch(event) {
-    heroSwitch.querySelectorAll('[ data-js-switch]').forEach((div) => {
+    heroSwitch.querySelectorAll('[data-js-switch]').forEach((div) => {
       div.classList.toggle('is-hidden')
     })
 
@@ -231,6 +231,7 @@
   }
 
   function togglePayLink() {
+    // @TODO: Depending on Stripe functionality the Payment Link might also need a `size` suffix
     const element = heroSwitch.querySelector('[data-js-switch]:not(.is-hidden)')
     const color = element.dataset.jsSwitch
     payLink.setAttribute('href', payLinks[color])
@@ -240,7 +241,7 @@
 
   // payLink.classList.remove('is-hidden')
 
-  document.querySelector('.color').addEventListener('click', handleSwitch)
+  document.querySelector('.color').addEventListener('click', handleHeroSwitchEvent)
 </script>
 </body>
 </html>
