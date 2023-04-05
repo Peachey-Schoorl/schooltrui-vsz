@@ -85,6 +85,21 @@
       color: var(--primary);
     }
 
+    .tag:hover {
+      opacity: 50%;
+      cursor: pointer;
+    }
+
+    .tag.is-active:hover {
+      opacity: 100%
+    }
+
+    .tag:hover,
+    .tag.is-active {
+      background: white;
+      color: var(--primary);
+    }
+
     /* Other styles */
     .buy-now a {
       border: none;
@@ -148,7 +163,7 @@
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
       <div class="has-text-left">
         <p class="price is-size-4 mb-6">€24,99</p>
-        <ul class="size tags mb-5">
+        <ul data-js="tags" class="size tags mb-5">
           <li class="tag is-medium is-rounded">XXS</li>
           <li class="tag is-medium is-rounded">XS</li>
           <li class="tag is-medium is-rounded">S</li>
@@ -181,6 +196,17 @@
   </section>
 </main>
 <script>
+  function handleTagEvent(event) {
+    if (event.target !== event.currentTarget) {
+      const isActive = event.target.classList.contains('is-active')
+      event.currentTarget.querySelectorAll('.tag').forEach(element => element.classList.remove('is-active'))
+
+      if (isActive === false) {
+        event.target.classList.add('is-active')
+      }
+    }
+  }
+
   const payLinks = {
     /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
      *
@@ -193,6 +219,8 @@
 
   const heroSwitch = document.querySelector('[data-js="hero-switch"]')
   const payLink = document.querySelector('[data-js="pay-link"]')
+
+  document.querySelector('[data-js="tags"]').addEventListener('click', handleTagEvent)
 
   function handleSwitch(event) {
     heroSwitch.querySelectorAll('[ data-js-switch]').forEach((div) => {
