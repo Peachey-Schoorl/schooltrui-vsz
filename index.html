@@ -65,22 +65,6 @@
       color: var(--light);
     }
 
-    .version-1:before {
-      background-color: #0F0F44;
-    }
-
-    .version-2:before {
-      background-color: #AFAFAF;
-    }
-
-    .color {
-      color: #7D91CA;
-    }
-
-    .color a {
-      color: #fff;
-    }
-
     .buy-now a {
       background-color: #7D91CA;
       color: var(--primary);
@@ -111,11 +95,6 @@
       list-style-type: none;
     }
 
-    .color > a:before {
-      border-radius: 50%;
-      content: " ";
-    }
-
     /* Overrides on Bulma classes*/
     .tag:not(body) {
       width: 3.5em;
@@ -135,24 +114,14 @@
 <main class="hero is-medium container">
   <section class="hero-body columns">
     <div class="hero-image column is-half container has-text-centered">
-      <div data-js="hero-switch">
-        <div data-js-switch="gray" class="" >
+      <div>
+        <div class="" >
           <figure class="image is-square">
             <img src="grijs-voorkant.png" alt="Schooltrui VSZ">
           </figure>
 <!--
           <figure class="image is-square">
             <img src="grijs-achterkant.png" alt="Schooltrui VSZ">
-          </figure>
--->
-        </div>
-        <div data-js-switch="blue" class="is-hidden">
-          <figure class="image is-square">
-            <img src="blauw-voorkant.png" alt="Schooltrui VSZ">
-          </figure>
-<!--
-          <figure class="image is-square">
-            <img src="blauw-achterkant.png" alt="Schooltrui VSZ">
           </figure>
 -->
         </div>
@@ -173,11 +142,6 @@
           <li class="tag is-medium is-rounded">XL</li>
           <li class="tag is-medium is-rounded">XXL</li>
         </ul>
-        <p class="color">
-          <a href="#" class="version-1">Blauw</a>
-          of
-          <a href="#" class="version-2">Grijs</a>
-        </p>
         <p class="buy-now mt-6">
           <a data-js="pay-link" class="is-hidden button is-large is-fullwidth" href="#">Bestel nu</a>
         </p>
@@ -209,40 +173,24 @@
   }
 
   const payLinks = {
-    /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
-     *
-     * De "blue" en "gray" laten staan anders gaat het stuk!
-     * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/a1b2c3d4e5f6g7h8j9'
-     */
-    blue: '',
+  /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
+   * De naam, bijvoorbeeld "gray", laten staan anders gaat het stuk!
+   * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/a1b2c3d4e5f6g7h8j9'
+   */
     gray: '',
   }
 
-  const heroSwitch = document.querySelector('[data-js="hero-switch"]')
   const payLink = document.querySelector('[data-js="pay-link"]')
 
   document.querySelector('[data-js="tags"]').addEventListener('click', handleTagEvent)
 
-  function handleSwitch(event) {
-    heroSwitch.querySelectorAll('[data-js-switch]').forEach((div) => {
-      div.classList.toggle('is-hidden')
-    })
-
-    togglePayLink()
-  }
-
   function togglePayLink() {
-    // @TODO: Depending on Stripe functionality the Payment Link might also need a `size` suffix
-    const element = heroSwitch.querySelector('[data-js-switch]:not(.is-hidden)')
-    const color = element.dataset.jsSwitch
-    payLink.setAttribute('href', payLinks[color])
+    // @TODO: Depending on Stripe functionality the Payment Link might also need a suffix
+    const link = payLinks['gray']
+    payLink.setAttribute('href', link)
   }
-
-  togglePayLink()
 
   // payLink.classList.remove('is-hidden')
-
-  document.querySelector('.color').addEventListener('click', handleHeroSwitchEvent)
 </script>
 </body>
 </html>
