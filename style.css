@@ -1,0 +1,96 @@
+/* Layout */
+html, body {
+    height: 100%;
+}
+
+.color > a:before {
+    display: inline-block;
+    height: 2em;
+    margin: 0 0.35em;
+    position: relative;
+    top: 0.5em;
+    width: 2em;
+}
+
+.hero-info {
+    padding-left: 5rem;
+}
+
+/* Typography */
+body {
+    letter-spacing: 0.1rem;
+}
+
+body, button, input, optgroup, select, textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title, .price {
+    letter-spacing: 0.075rem;
+}
+
+.price::after {
+    content: " euro";
+    opacity: 50%
+}
+
+/* Color Styling */
+:root {
+    --primary: #10245C;
+    --secondary: #AFAFAF;
+    --light: #FFF;
+}
+
+html {
+    background-color: var(--primary);
+}
+
+body, button, input, optgroup, select, textarea {
+    color: var(--light);
+}
+
+.title {
+    color: var(--light);
+}
+
+.buy-now a {
+    background-color: #7D91CA;
+    color: var(--primary);
+}
+
+.tag:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.tag.is-active:hover {
+    opacity: 100%
+}
+
+.tag:hover,
+.tag.is-active {
+    background: white;
+    color: var(--primary);
+}
+
+/* Other styles */
+.buy-now a {
+    border: none;
+    border-radius: 0;
+}
+
+.size li {
+    list-style-type: none;
+}
+
+/* Overrides on Bulma classes*/
+.tag:not(body) {
+    width: 3.5em;
+    background-color: var(--primary);
+    color: var(--light);
+    border: 1px solid var(--light);
+}
+
+.button.is-hovered, .button:hover {
+    color: var(--light);
+}
