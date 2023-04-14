@@ -102,7 +102,6 @@ h2.title {
 
 /* Overrides on Bulma classes*/
 .tag:not(body) {
-    width: 3.5em;
     background-color: var(--primary);
     color: var(--light);
     border: 1px solid var(--light);
