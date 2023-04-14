@@ -82,6 +82,14 @@ h2.title {
     color: var(--primary);
 }
 
+.information {
+    border: 1px solid;
+    border-radius: 1em;
+    background: var(--light);
+    color: var(--primary);
+    margin: 1em;
+}
+
 /* Other styles */
 .buy-now a {
     border: none;

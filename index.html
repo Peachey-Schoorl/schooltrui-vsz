@@ -43,7 +43,6 @@
 <main class="hero is-medium container">
   <section class="hero-body columns">
     <div class="hero-image column is-half container has-text-centered carousel carousel-inactive">
-      <figure class="item-0 image is-square"><img src="grijs-voorkant.png" alt="Schooltrui VSZ"></figure>
       <figure class="item-1 image"><img alt="Schooltrui VSZ" src="img/schooltrui-2.png"></figure>
       <figure class="item-2 image"><img alt="Schooltrui VSZ" src="img/schooltrui-3.png"></figure>
       <figure class="item-3 image"><img alt="Schooltrui VSZ" src="img/schooltrui-4.png"></figure>
@@ -65,20 +64,38 @@
           <a data-js="pay-link" class="button is-large is-fullwidth" href="#">Bestel nu</a>
         </p>
         <p class="mt-4">
-          <!-- @TODO: Blurb content goes here (see https://github.com/Peachey-Schoorl/schooltrui-vsz/issues/6) -->
-          Vul hieronder je email adres in om op de hoogte te blijven!
+          Kijk voor meer informatie over verzenden/ophalen en levertijden hier beneden.
         </p>
       </div>
     </div>
   </section>
-  <section class="container section box mb-6">
+</main>
+  <section class="content section columns mb-6">
+    <article class="information column">
+    <h2>Verzenden / Ophalen</h2>
+    <p>U kunt er voor kiezen om de trui op te halen op de locatie Weerdslag van de Vrijeschool in Zutphen.</p>
+    <p>Mocht u de trui liever toegezonden krijgen, dan kan dat ook, tegen verzendkosten.</p>
+    <p>Als de trui klaar is voor ophalen of verzenden, ontvangt u een mailtje met meer details</p>
+    </article>
+    <article class="information column">
+      <h2>Levertijd</h2>
+      <p>Het bestel traject van de schooltrui is als volgt:</p>
+      <ul>
+        <li>Eerst worden alle bestellingen opgenomen</li>
+        <li>Als iedereen besteld en betaald heeft worden de truien door de fabrikant gemaakt</li>
+        <li>Wanneer alle truien zijn geleverd kunnen ze worden opgehaald of verzonden</li>
+        <li>Alle truien zullen uiterlijk 9 juli verzonden (of opgehaal) kunnen worden</li>
+      </ul>
+    </article>
+  </section>
+  <section class="container section box has-text-centered mb-6">
+    <h2 class="title">Vul je email adres in om op de hoogte te blijven!</h2>
   <!-- @TODO: Other content goes here (see https://github.com/Peachey-Schoorl/schooltrui-vsz/issues/7) -->
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLScxXVXKS2eeiIdDE20BgIJub5Hco8TiH7oYRkqzmEWGSNoKKA/viewform?embedded=true"
       width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…
     </iframe>
   </section>
-</main>
 <script>
   function handleTagEvent(event) {
     if (event.target !== event.currentTarget) {
