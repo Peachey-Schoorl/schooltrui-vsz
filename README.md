@@ -8,7 +8,11 @@ The page is plain HTML.
 
 Besides plain CSS, [Bulma](https://bulma.io/) is used for styling.
 
+The [Bulma Carousel/Slider component](https://bulma-carousel.onrender.com/) is used to display the hero images.
+
 The actual conversion page (where the sweater can be bought) is hosted on Stripe.
+
+To gather user interest, a Google Form is used.
 
 ### Color Scheme
 
