@@ -40,6 +40,7 @@ body, button, input, optgroup, select, textarea {
 
 /* Color Styling */
 :root {
+    --dark: #000;
     --primary: #10245C;
     --secondary: #AFAFAF;
     --light: #FFF;
@@ -55,6 +56,10 @@ body, button, input, optgroup, select, textarea {
 
 .title {
     color: var(--light);
+}
+
+h2.title {
+    color: var(--dark);
 }
 
 .buy-now a {
