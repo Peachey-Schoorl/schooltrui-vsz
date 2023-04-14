@@ -52,21 +52,17 @@
     </div>
 
     <!-- @FIXME: Add Product RDFa for Search Engines -->
-    <div class="hero-info column is-half container has-text-centered">
+    <div class="hero-info column is-half container">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
-      <div class="has-text-left">
-        <p class="price is-size-4 mb-6">€24,99</p>
-        <ul data-js="tags" class="size tags mb-5">
-          <li class="tag is-medium is-rounded">XXS</li>
-          <li class="tag is-medium is-rounded">XS</li>
-          <li class="tag is-medium is-rounded">S</li>
-          <li class="tag is-medium is-rounded">M</li>
-          <li class="tag is-medium is-rounded">L</li>
-          <li class="tag is-medium is-rounded">XL</li>
-          <li class="tag is-medium is-rounded">XXL</li>
+      <div>
+        <p  class="has-text-left price is-size-4 mb-6">€24,99</p>
+        <p class="mb-2">Hoe wil je de trui ontvangen?</p>
+        <ul data-js="tags" class=" tags mb-5 ">
+          <li class="tag is-medium is-rounded" data-link="pickup">Ophalen</li>
+          <li class="tag is-medium is-rounded" data-link="send">Verzenden</li>
         </ul>
         <p class="buy-now mt-6">
-          <a data-js="pay-link" class="is-hidden button is-large is-fullwidth" href="#">Bestel nu</a>
+          <a data-js="pay-link" class="button is-large is-fullwidth" href="#">Bestel nu</a>
         </p>
         <p class="mt-4">
           <!-- @TODO: Blurb content goes here (see https://github.com/Peachey-Schoorl/schooltrui-vsz/issues/6) -->
@@ -97,21 +93,16 @@
 
   const payLinks = {
   /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
-   * De naam, bijvoorbeeld "gray", laten staan anders gaat het stuk!
-   * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/a1b2c3d4e5f6g7h8j9'
+   * De naam, bijvoorbeeld "send" of "pickup", laten staan anders gaat het stuk!
+   * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/live_a1b2c3d4e5f6g7h8j9'
    */
-    gray: '',
+    send: 'https://buy.stripe.com/test_dR617X5dI7tj29a5kk?locale=nl',
+    pickup: 'https://buy.stripe.com/test_00g03TgWqbJzg007st?locale=nl'
   }
 
   const payLink = document.querySelector('[data-js="pay-link"]')
 
   document.querySelector('[data-js="tags"]').addEventListener('click', handleTagEvent)
-
-  function togglePayLink() {
-    // @TODO: Depending on Stripe functionality the Payment Link might also need a suffix
-    const link = payLinks['gray']
-    payLink.setAttribute('href', link)
-  }
 
   function attachCarousel(selector) {
     const carousel = bulmaCarousel.attach(selector, {
@@ -138,12 +129,21 @@
   }
 
   const searchParams = new URLSearchParams(document.location.search);
-  if (searchParams.has('carousel')) {
-    document.querySelector('.carousel .item-0').remove()
-    attachCarousel('.carousel');
-  }
 
-  // payLink.classList.remove('is-hidden')
+  payLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    // get send or pickup
+    const tag = document.querySelector('[data-js="tags"] .is-active')
+
+    if (! tag) {
+      alert('Je moet kiezen of je de trui wilt ophalen of laten verzenden!')
+    } else {
+      const link = payLinks[tag.dataset.link]
+      document.location = link
+    }
+  })
+
+  attachCarousel('.carousel')
 </script>
 </body>
 </html>
