@@ -54,7 +54,10 @@
     <div class="hero-info column is-half container">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
       <div>
-        <p  class="has-text-left price is-size-4 mb-6">€24,99</p>
+        <p  class="has-text-left price is-size-4 mb-6">
+          €24,99 <span class="small">euro</span>
+          <span class="send is-size-6 is-hidden">(plus €7,65 verzendkosten)</span>
+        </p>
         <p class="mb-2">Hoe wil je de trui ontvangen?</p>
         <ul data-js="tags" class=" tags mb-5 ">
           <li class="tag is-medium is-rounded" data-link="pickup">Ophalen</li>
@@ -101,6 +104,12 @@
     if (event.target !== event.currentTarget) {
       const isActive = event.target.classList.contains('is-active')
       event.currentTarget.querySelectorAll('.tag').forEach(element => element.classList.remove('is-active'))
+
+      if (event.target.dataset.link === 'send') {
+        document.querySelector('.send').classList.remove('is-hidden')
+      } else {
+        document.querySelector('.send').classList.add('is-hidden')
+      }
 
       if (isActive === false) {
         event.target.classList.add('is-active')
@@ -155,8 +164,7 @@
     if (! tag) {
       alert('Je moet kiezen of je de trui wilt ophalen of laten verzenden!')
     } else {
-      const link = payLinks[tag.dataset.link]
-      document.location = link
+      document.location = payLinks[tag.dataset.link]
     }
   })
 

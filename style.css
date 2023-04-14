@@ -33,9 +33,13 @@ body, button, input, optgroup, select, textarea {
     letter-spacing: 0.075rem;
 }
 
-.price::after {
-    content: " euro";
-    opacity: 50%
+.price .small {
+    opacity: 50%;
+}
+
+.price .send {
+    display: block;
+    opacity: 50%;
 }
 
 /* Color Styling */
