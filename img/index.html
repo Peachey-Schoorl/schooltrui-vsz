@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schooltrui VSZ - Product Fotos</title>
+  <meta name="description" content="Schooltrui van de VSZ (Vrijeschool Zutphen)">
+
+  <link rel="icon" href="grijs-achterkant.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"
+    integrity="sha256-qKR77yzVBkDYKuoSg2BpAIbMtmF8aFjuTHFVnIjkpzI=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css"
+    integrity="sha256-nVhrDZU/ne3I/z6LXWEbyUOEmv79sPGKEbsP7SWLkHI=" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Overrides on Bulma Carousel*/
+    .carousel {
+      overflow: hidden;
+      color: var(--primary)
+    }
+    .carousel .slider-item {
+      margin-right: 1em
+    }
+  </style>
+</head>
+<body>
+<header>
+</header>
+<main class="hero is-medium container">
+  <section class="hero-body columns">
+    <div class="hero-image column is-half container has-text-centered carousel">
+      <figure class="item-1 image"><img alt="Schooltrui VSZ" src="schooltrui-1.png"></figure>
+      <figure class="item-2 image"><img alt="Schooltrui VSZ" src="schooltrui-2.png"></figure>
+      <figure class="item-3 image"><img alt="Schooltrui VSZ" src="schooltrui-3.png"></figure>
+      <figure class="item-4 image"><img alt="Schooltrui VSZ" src="schooltrui-4.png"></figure>
+      <figure class="item-5 image"><img alt="Schooltrui VSZ" src="schooltrui-5.png"></figure>
+    </div>
+    <div class="hero-info column is-half container has-text-centered">
+      <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
+    </div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script>
+  const carousel = bulmaCarousel.attach('.carousel', {
+    "autoplay": false, // Autoplay carousel
+    "autoplaySpeed": 3000, // Time between each transition when autoplay is active (ms)
+    "duration": 300, // Transition animation duration (in ms)
+    "effect": "translate", // Animation effect for item transition (translate|fade)
+    "infinite": true, // Activate infinite display mode
+    "initialSlide": 0, //Initial item index
+    "loop": false, // Activate loop display mode
+    "navigation": true, // Display navigation buttons
+    "navigationKeys": true, // Enable navigation with arrow keys
+    "navigationSwipe": true, // Enable swipe navigation
+    "pagination": true, // Display pagination bullets
+    "pauseOnHover": true, // Stop autoplay when cursor hover carousel
+    "slidesToScroll": 1, // Slide to scroll on each step
+    "slidesToShow": 1, // Slides to show at a time
+    "timing": "ease", // Transiation animation type
+  })
+
+  window.addEventListener('resize', () => {
+    console.log('!')
+    carousel[0].reset();
+  })
+
+</script>
+</body>
+</html>
