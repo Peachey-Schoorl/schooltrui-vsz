@@ -44,7 +44,7 @@ body, button, input, optgroup, select, textarea {
 
 /* Color Styling */
 :root {
-    --dark: #000;
+    --dark: #0A183F;
     --primary: #10245C;
     --secondary: #AFAFAF;
     --light: #FFF;
@@ -56,6 +56,16 @@ html {
 
 body, button, input, optgroup, select, textarea {
     color: var(--light);
+}
+
+.footer {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.footer a {
+    color: var(--light);
+    font-weight: bold;
 }
 
 .title {
