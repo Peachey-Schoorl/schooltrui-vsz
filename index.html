@@ -60,7 +60,7 @@
     <!-- @FIXME: Add Product RDFa for Search Engines -->
     <div class="hero-info column is-half container">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
-      <div>
+      <div data-js="for-sale">
         <p class="has-text-left price is-size-4 mb-6">
           €24,99 <span class="small">euro</span>
           <span class="send is-size-6 is-hidden">(plus €7,65 verzendkosten)</span>
@@ -75,6 +75,11 @@
         </p>
         <p class="mt-4">
           Kijk voor veelgestelde vragen, informatie over verzenden/ophalen, en levertijden hier beneden.
+        </p>
+      </div>
+      <div data-js="sold-out" class="is-hidden">
+        <p class="has-text-left price is-size-4 mb-6">
+          Helaas, de trui is niet meer verkrijgbaar.
         </p>
       </div>
     </div>
@@ -255,7 +260,11 @@
   let endDataElement = document.querySelector('[data-js-countown="end-date"]').getAttribute('datetime')
   let endDate = new Date(endDataElement);
 
-  attachCountdown(countDownContainer, endDate)
+  if (endDate < new Date()) {
+    document.querySelectorAll('[data-js="countdown"], [data-js="for-sale"], [data-js="sold-out"]').forEach(e => e.classList.toggle('is-hidden'))
+  } else {
+    attachCountdown(countDownContainer, endDate)
+  }
 </script>
 </body>
 </html>
