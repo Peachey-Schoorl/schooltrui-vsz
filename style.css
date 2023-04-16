@@ -81,17 +81,17 @@ h2.title {
     color: var(--primary);
 }
 
-.tag:hover {
+.hero-info .tag:hover {
     opacity: 50%;
     cursor: pointer;
 }
 
-.tag.is-active:hover {
+.hero-info .tag.is-active:hover {
     opacity: 100%
 }
 
-.tag:hover,
-.tag.is-active {
+.hero-info .tag:hover,
+.hero-info .tag.is-active {
     background: white;
     color: var(--primary);
 }
