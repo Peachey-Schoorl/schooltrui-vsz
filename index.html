@@ -39,7 +39,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+<header class="container section box has-text-centered" data-js="countdown">
+  <p class=" is-size-4 is-size-4-touch is-size-5-mobile">
+    Bestelen kan tot
+    <time data-js-countown="end-date" datetime="April 21 2023 16:00:00 GMT+0200">21 April</time>
+    , dat is nog:
+  </p>
+  <ul data-js-countown="container" class="tags is-justify-content-center is-size-5 is-size-6-touch"></ul>
 </header>
 <main class="hero is-medium container">
   <section class="hero-body columns">
@@ -244,6 +250,12 @@
   })
 
   attachCarousel('.carousel')
+
+  let countDownContainer = document.querySelector('[data-js-countown="container"]')
+  let endDataElement = document.querySelector('[data-js-countown="end-date"]').getAttribute('datetime')
+  let endDate = new Date(endDataElement);
+
+  attachCountdown(countDownContainer, endDate)
 </script>
 </body>
 </html>
