@@ -138,3 +138,14 @@ h2.title {
 .carousel-inactive .image:not(:first-child) {
     display: none;
 }
+
+/* Overrides for Countdown */
+header[data-js="countdown"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 1rem 0 0 0;
+}
+
+[data-js="countdown"] .tag {
+    padding: 0 0.5em;
+}
