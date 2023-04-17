@@ -64,7 +64,7 @@ async function fetchCheckouts(privateKey, starting_after = null) {
   })
 }
 
-const buildHtml = (title, content) => `<!doctype html>
+const buildHtml = (content, title) => `<!doctype html>
 <html lang="">
 <head>
   <meta charset="utf-8">
@@ -81,7 +81,7 @@ const buildHtml = (title, content) => `<!doctype html>
   <main class="container section">
     <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
     <section class="box section">
-      <h2 class="title">${title}</h2>
+      ${title?`<h2 class="title">${title}</h2>`:''}
       ${content}
     </section>
 </body>
@@ -125,7 +125,7 @@ export default {
       </table>
 `
 
-      const body = buildHtml('Bestellingen', table)
+      const body = buildHtml(table, 'Bestellingen')
 
       return new Response(body, responseOptions)
     }).catch(async (error) => {
@@ -133,7 +133,7 @@ export default {
       responseOptions.statusText = '"Oh, bother." said Pooh, "Something has gone wrong."'
 
       if (typeof error.json === 'undefined') {
-        const body = buildHtml('Er ging iets mis!', `<pre>${error}</pre>`)
+        const body = buildHtml(`<pre>${error}</pre>`, 'Er ging iets mis!')
         return new Response(body, responseOptions)
       } else {
         let json = {}
@@ -144,10 +144,10 @@ export default {
           json = error
         }
 
-        const body = buildHtml('Er ging iets mis!', `
+        const body = buildHtml(`
           <p>Neem contact op met de ontwikkelaar van de website, vermeld daarbij onderstaande foutmelding:</p>
           <pre>${JSON.stringify(json, null, 4)}</pre>
-        `)
+        `, 'Er ging iets mis!')
 
         ['status', 'statusText', 'headers'].forEach(key => {
           let value = error[key];
