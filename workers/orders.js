@@ -143,8 +143,6 @@ function buildTable(orders) {
 
 export default {
   async fetch(request, env) {
-    // @FIXME: This output needs to be placed behind a login using the Stripe OAuth flow
-
     return fetchCheckouts(env.stripe_token).then(checkouts =>
       checkouts.map(checkout => ({
         address: checkout.customer_details.address,
@@ -179,7 +177,7 @@ export default {
         const body = buildHtml(`
           <p>Neem contact op met de ontwikkelaar van de website, vermeld daarbij onderstaande foutmelding:</p>
           <pre>${JSON.stringify(json, null, 4)}</pre>
-        `, 'Er ging iets mis!')
+        `, 'Er ging iets mis!');
 
           ['status', 'statusText', 'headers'].forEach(key => {
           let value = error[key];
