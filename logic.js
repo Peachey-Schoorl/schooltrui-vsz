@@ -1,3 +1,12 @@
+const payLinks = {
+  /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
+   * De naam, bijvoorbeeld "send" of "pickup", laten staan anders gaat het stuk!
+   * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/live_a1b2c3d4e5f6g7h8j9'
+   */
+  send: 'https://buy.stripe.com/4gw00wgFSdZT9O014a?locale=nl',
+  pickup: 'https://buy.stripe.com/cN2bJedtGaNHd0c9AF?locale=nl',
+}
+
 function attachCarousel(container) {
   const carousel = bulmaCarousel.attach(container, {
     'autoplay': false, // Autoplay carousel
@@ -70,35 +79,29 @@ function handleTagEvent(event) {
   }
 }
 
-const carouselContainer = document.querySelector('.carousel')
-const countDownContainer = document.querySelector('[data-js-countown="container"]')
-const payLink = document.querySelector('[data-js="pay-link"]')
+const features = JSON.parse(document.querySelector('[data-js-features]').dataset.jsFeatures)
 
-const payLinks = {
-  /* HIER KUN JE DE LINKS UIT STRIPE AANPASSEN
-   * De naam, bijvoorbeeld "send" of "pickup", laten staan anders gaat het stuk!
-   * Tussen de haakjes '' de link invullen, bijvoorbeeld: 'https://buy.stripe.com/live_a1b2c3d4e5f6g7h8j9'
-   */
-  send: 'https://buy.stripe.com/4gw00wgFSdZT9O014a?locale=nl',
-  pickup: 'https://buy.stripe.com/cN2bJedtGaNHd0c9AF?locale=nl',
-}
+if (features['sold-out'] === true) {
+  document.querySelector('[data-js="sold-out"]').classList.remove('is-hidden')
+} else {
+  const payLink = document.querySelector('[data-js="pay-link"]')
 
-if (carouselContainer) {
-  attachCarousel(carouselContainer)
-}
+  if (features['countdown'] === true) {
+    const countDownContainer = document.querySelector('[data-js-countown="container"]')
+    let endDataElement = document.querySelector('[data-js-countown="end-date"]').getAttribute('datetime')
+    let endDate = new Date(endDataElement)
 
-if (countDownContainer) {
-  let endDataElement = document.querySelector('[data-js-countown="end-date"]').getAttribute('datetime')
-  let endDate = new Date(endDataElement)
-
-  if (endDate < new Date()) {
-    document.querySelectorAll('[data-js="countdown"], [data-js="for-sale"], [data-js="sold-out"]').forEach(e => e.classList.toggle('is-hidden'))
+    if (endDate < new Date()) {
+      document.querySelector('[data-js="sold-out"]').classList.remove('is-hidden')
+    } else {
+      document.querySelectorAll('[data-js="countdown"], [data-js="for-sale"]')
+        .forEach(e => e.classList.remove('is-hidden'))
+      attachCountdown(countDownContainer, endDate)
+    }
   } else {
-    attachCountdown(countDownContainer, endDate)
+    document.querySelector('[data-js="for-sale"]').classList.remove('is-hidden')
   }
-}
 
-if ( ! payLink.closest('[data-js="for-sale"]').classList.contains('is-hidden')) {
   document.querySelector('[data-js="tags"]').addEventListener('click', handleTagEvent)
 
   payLink.addEventListener('click', (event) => {
@@ -113,3 +116,5 @@ if ( ! payLink.closest('[data-js="for-sale"]').classList.contains('is-hidden')) 
     }
   })
 }
+
+attachCarousel('.carousel')

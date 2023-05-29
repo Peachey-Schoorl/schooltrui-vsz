@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl">
+<html lang="nl" data-js-features='{"sold-out":false, "countdown":true}'>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="container section box has-text-centered" data-js="countdown">
+<header class="container section box has-text-centered is-hidden" data-js="countdown">
   <p class=" is-size-4 is-size-4-touch is-size-5-mobile">
     Bestelen kan tot
     <time data-js-countown="end-date" datetime="April 22 2023 23:59:59 GMT+0200">22 April</time>
@@ -60,7 +60,7 @@
     <!-- @FIXME: Add Product RDFa for Search Engines -->
     <div class="hero-info column is-half container">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
-      <div data-js="for-sale">
+      <div data-js="for-sale" class="is-hidden">
         <p class="has-text-left price is-size-4 mb-6">
           €24,99 <span class="small">euro</span>
           <span class="send is-size-6 is-hidden">(plus €7,65 verzendkosten)</span>
