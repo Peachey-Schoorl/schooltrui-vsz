@@ -2,7 +2,7 @@ const responseOptions = {
   headers: {
     "content-type": "text/html;charset=UTF-8"
   },
-};
+}
 
 const sizeMap = {
   "extraextrasmallxxs": 'Extra Extra Small (XXS)',
@@ -23,6 +23,17 @@ const sizes = {
   "extralargexl": 0,
   "extraextralargexxl": 0,
 }
+
+const limits = {
+  "extraextrasmallxxs": 1,
+  "extrasmallxs": 3,
+  "smalls": 40,
+  "mediumm": 63,
+  "largel": 47,
+  "extralargexl": 12,
+  "extraextralargexxl": 5,
+}
+
 
 async function fetchCheckouts(privateKey, starting_after = null) {
   const baseUrl = 'https://api.stripe.com/v1'
@@ -70,6 +81,7 @@ const buildHtml = (content, title) => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schooltrui VSZ</title>
+
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,15 +93,17 @@ const buildHtml = (content, title) => `<!doctype html>
   <main class="container section">
     <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
     <section class="box section">
-      ${title?`<h2 class="title">${title}</h2>`:''}
-      ${content}
+    ${title?`<h2 class="title">${title}</h2>`:''}
+    ${content}
     </section>
+  </main>
 </body>
 </html>
 `
 
 export default {
   async fetch(request, env) {
+
     return fetchCheckouts(env.stripe_token).then(checkouts =>
       checkouts.map(checkout => ({
         size: checkout.custom_fields[0].dropdown.value,
@@ -100,9 +114,16 @@ export default {
       })
 
       let tableRows = ''
-
       Object.entries(sizes).forEach(([size, amount]) => {
-        tableRows += `<tr><td>${sizeMap[size]}</td><td>${amount}</td></tr>`
+        let status=''
+        if (amount > limits[size]) {
+          status = 'has-background-danger-light has-text-danger-dark has-text-weight-bold'
+        } else if (amount < limits[size]) {
+          status = 'has-background-info-light'
+        } else {
+          status = 'has-background-success-light'          
+        }
+        tableRows += `<tr class="${status}"><td>${sizeMap[size]}</td><td>${amount}</td><td>${limits[size]}</td></tr>`
       })
 
       let table = `
@@ -111,12 +132,14 @@ export default {
         <tr>
           <th>Maat</th>
           <th>Hoeveelheid</th>
+          <td>Limiet</td>
         </tr>
         </thead>
         <tfoot>
         <tr>
           <td><strong>Totaal</strong></td>
           <td><strong>${orders.length}</strong></td>
+          <td>171</td>
         </tr>
         </tfoot>
         <tbody>
@@ -124,7 +147,6 @@ export default {
         </tbody>
       </table>
 `
-
       const body = buildHtml(table, 'Bestellingen')
 
       return new Response(body, responseOptions)
@@ -147,9 +169,9 @@ export default {
         const body = buildHtml(`
           <p>Neem contact op met de ontwikkelaar van de website, vermeld daarbij onderstaande foutmelding:</p>
           <pre>${JSON.stringify(json, null, 4)}</pre>
-        `, 'Er ging iets mis!')
+        `, 'Er ging iets mis!');
 
-        ['status', 'statusText', 'headers'].forEach(key => {
+        (['status', 'statusText', 'headers']).forEach(key => {
           let value = error[key];
 
           if (value !== undefined) {
