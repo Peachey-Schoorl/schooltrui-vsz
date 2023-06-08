@@ -90,7 +90,7 @@ function buildTable(orders) {
         ${order.address.country ? order.address.country : ''}
       `
 
-    if (address.trim() === '') {
+    if (order.shipping === false) {
       pickUpRows.push(`
           <tr>
             <td>${order.name}</td>
@@ -149,6 +149,7 @@ export default {
         email: checkout.customer_details.email,
         name: checkout.customer_details.name,
         size: checkout.custom_fields[0].dropdown.value,
+        shipping: (checkout.billing_address_collection === "required")
       })))
     .then(orders => orders.sort((a, b) => a.name.localeCompare(b.name)))
     .then(orders => {
@@ -179,7 +180,7 @@ export default {
           <pre>${JSON.stringify(json, null, 4)}</pre>
         `, 'Er ging iets mis!');
 
-          ['status', 'statusText', 'headers'].forEach(key => {
+          (['status', 'statusText', 'headers']).forEach(key => {
           let value = error[key];
 
           if (value !== undefined) {
