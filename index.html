@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-js-features='{"sold-out":false, "countdown":true}'>
+<html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,18 +35,9 @@
     integrity="sha256-qKR77yzVBkDYKuoSg2BpAIbMtmF8aFjuTHFVnIjkpzI=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css"
     integrity="sha256-nVhrDZU/ne3I/z6LXWEbyUOEmv79sPGKEbsP7SWLkHI=" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/countdown@2.6.0/countdown.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="container section box has-text-centered is-hidden" data-js="countdown">
-  <p class=" is-size-4 is-size-4-touch is-size-5-mobile">
-    Bestelen kan tot
-    <time data-js-countown="end-date" datetime="June 11 2023 23:59:59 GMT+0200">11 juni</time>
-    , dat is nog:
-  </p>
-  <ul data-js-countown="container" class="tags is-justify-content-center is-size-5 is-size-6-touch"></ul>
-</header>
 <main class="hero is-medium container">
   <section class="hero-body columns">
     <div class="hero-image column is-half container has-text-centered carousel carousel-inactive">
@@ -57,27 +48,9 @@
       <figure class="item-5 image"><img alt="Schooltrui VSZ" src="img/schooltrui-1.png"></figure>
     </div>
 
-    <!-- @FIXME: Add Product RDFa for Search Engines -->
     <div class="hero-info column is-half container">
       <h1 class="title has-text-left is-1">Schooltrui VSZ</h1>
-      <div data-js="for-sale" class="is-hidden">
-        <p class="has-text-left price is-size-4 mb-6">
-          €24,99 <span class="small">euro</span>
-          <span class="send is-size-6 is-hidden">(plus €7,65 verzendkosten)</span>
-        </p>
-        <p class="mb-2">Hoe wil je de trui ontvangen?</p>
-        <ul data-js="tags" class=" tags mb-5 ">
-          <li class="tag is-medium is-rounded" data-link="pickup">Ophalen</li>
-          <li class="tag is-medium is-rounded" data-link="send">Verzenden</li>
-        </ul>
-        <p class="buy-now mt-6">
-          <a data-js="pay-link" class="button is-large is-fullwidth" href="#">Bestel nu</a>
-        </p>
-        <p class="mt-4">
-          Kijk voor veelgestelde vragen, informatie over verzenden/ophalen, en levertijden hier beneden.
-        </p>
-      </div>
-      <div data-js="sold-out" class="is-hidden">
+      <div data-js="sold-out">
         <p class="has-text-left price is-size-4 mb-6">
           Helaas, de trui is niet meer verkrijgbaar.
         </p>
